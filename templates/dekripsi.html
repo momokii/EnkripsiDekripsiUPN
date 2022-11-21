@@ -1,0 +1,76 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}
+
+Enkrip Pesanmu
+
+{% endblock %}
+
+
+{% block content %}
+
+<section class="vh-100" style="background-color: #eee;">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col col-lg-9 col-xl-7">
+          <div class="card rounded-3">
+            <div class="card-body p-4">
+
+              <h3 class="text-center my-3 pb-3">Alfinhi Hajid Dhia</h3>
+              <h5 class="text-center my-3 pb-3">( 123200142 )</h5>
+              <hr>
+              <h2 class="text-center my-3 pb-3">Dekripsi</h2>
+
+              <hr>
+
+              {% if dekripsi == None %}
+          <form action="{{ url_for('dekripsi') }}" method="post" novalidate>
+           {{ form.csrf_token() }}
+          <div class="form-group">
+            {{ form.cipher.label() }}
+            {{ form.cipher(class = 'form-control', rows = 5) }}
+          </div>
+          <div class="form-group">
+            {{ form.kunci.label() }}
+            {{ form.kunci(class = 'form-control') }}
+          </div>
+
+            {{ form.submit(class = 'btn btn-success') }}
+        </form>
+              {% elif dekripsi == True %}
+          <form action="#" method="post" novalidate>
+
+          <div class="form-group">
+            <label>Kunci Pesan Anda Masukan</label>
+            <input type="text" class="form-control" value="{{ hasil['kunci'] }}" readonly>
+          </div>
+          <div class="form-group">
+            <label>Cipher Teks Anda Masukan</label>
+            <p>
+              {{ hasil['cipher'] }}
+            </p>
+          </div>
+          <div class="form-group">
+            <label>Hasil Enkripsi Pesan</label>
+            <p>
+              {{ hasil['hasil'] }}
+            </p>
+          </div>
+
+        </form>
+              {% else %}
+
+              <h3 class = "text-danger">Dekripsi Gagal Cipher Teks tidak sesuai dengan kunci!</h3>
+
+
+              {% endif %}
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

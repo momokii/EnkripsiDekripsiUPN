@@ -1,0 +1,67 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}
+
+Enkrip Pesanmu
+
+{% endblock %}
+
+
+{% block content %}
+
+<section class="vh-100" style="background-color: #eee;">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col col-lg-9 col-xl-7">
+          <div class="card rounded-3">
+            <div class="card-body p-4">
+
+              <h3 class="text-center my-3 pb-3">Alfinhi Hajid Dhia</h3>
+              <h5 class="text-center my-3 pb-3">( 123200142 )</h5>
+              <hr>
+              <h2 class="text-center my-3 pb-3">Enkripsi</h2>
+
+
+              <hr>
+
+              {% if enkripsi == False %}
+          <form action="{{ url_for('enkripsi') }}" method="post" novalidate>
+           {{ form.csrf_token() }}
+          <div class="form-group">
+            {{ form.pesan.label() }}
+            {{ form.pesan(class = 'form-control', rows = 5) }}
+          </div>
+            {{ form.submit(class = 'btn btn-primary') }}
+        </form>
+              {% else %}
+          <form action="#" method="post" novalidate>
+
+          <div class="form-group">
+            <label>Kunci Pesan Anda</label>
+            <input type="text" class="form-control" value="{{ hasil['key'] }}" readonly>
+          </div>
+          <div class="form-group">
+            <label>Plain Text</label>
+            <input type="text" class="form-control" value="{{ hasil['plain_text'] }}" readonly>
+          </div>
+          <div class="form-group">
+            <label>Hasil Enkripsi Pesan</label>
+            <p>
+              {{ hasil['hasil'] }}
+            </p>
+          </div>
+
+        </form>
+              {% endif %}
+
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

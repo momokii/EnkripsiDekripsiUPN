@@ -1,0 +1,49 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}
+
+Enkrip Pesanmu
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class=" d-flex justify-content-center">
+
+<section class="vh-100" style="background-color: #eee;">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col col-lg-9 col-xl-7">
+          <div class="card rounded-3">
+            <div class="card-body p-4">
+
+              <h3 class="text-center my-3 pb-3">Alfinhi Hajid Dhia</h3>
+              <h5 class="text-center my-3 pb-3">( 123200142 )</h5>
+              <hr>
+
+
+              <div class="d-flex justify-content-center">
+
+
+                  <a class="btn btn-primary text-white" href="{{ url_for('enkripsi') }}">
+                    Enkripsi
+                  </a>
+
+                &nbsp; &nbsp; &nbsp; &nbsp;
+                  <a class="btn btn-success text-white" href="{{ url_for('dekripsi') }}">
+                    Dekripsi
+                  </a>
+
+              </div>
+
+              <hr>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}
